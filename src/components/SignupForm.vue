@@ -36,6 +36,15 @@
                 this.$refs.modalSignUp.hide()
             },
             signup(){
+                if(this.signupUsername.length < 1 || this.signupPassword < 1 || this.signupConfirmPassword < 1){
+                    this.error = true
+                    this.errorMessage = 'Mhhh... some fields are empty!'
+                    return
+                }else if(this.signupPassword !== this.signupConfirmPassword){
+                    this.error = true
+                    this.errorMessage = 'Password fields must match'
+                    return
+                }
                 const p = new URLSearchParams()
                 p.set('email', this.signupUsername)
                 p.set('pwd', this.signupPassword)
@@ -50,11 +59,11 @@
                     return
                 }
                 localStorage.authToken = req.data.jwt
-                this.$router.push('/myevents')
+                this.$router.push('myevents')
             },
             signupFailed () {
                 this.error = true
-                this.errorMessage = 'Formulaire invalide'
+                this.errorMessage = 'Sign up failed'
             }
         }
     }

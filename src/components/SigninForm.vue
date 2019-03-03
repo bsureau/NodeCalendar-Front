@@ -32,6 +32,11 @@
                 this.$refs.modalSignIn.hide()
             },
             signin(){
+                if(this.signinUsername.length < 1 || this.signinPassword < 1){
+                    this.error = true
+                    this.errorMessage = 'Mhhh... some fields are empty!'
+                    return
+                }
                 const p = new URLSearchParams()
                 p.set('email', this.signinUsername)
                 p.set('pwd', this.signinPassword)
@@ -49,7 +54,7 @@
             },
             signinFailed () {
                 this.error = true
-                this.errorMessage = 'Identifiants incorrects'
+                this.errorMessage = 'Invalid login'
             }
         }
     }
