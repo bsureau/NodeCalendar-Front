@@ -4,7 +4,7 @@
        <td>{{desc}}</td>
        <td>{{startDate}}</td>
        <td>{{endDate}}</td>
-       <td><b-button :id="id" variant="danger" @click="del()">Delete</b-button></td>
+       <td><b-button variant="danger" @click="del()">Delete</b-button></td>
    </tr>
 </template>
 
