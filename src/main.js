@@ -33,6 +33,8 @@ if(authToken){
 router.beforeEach((to, from, next) => {
     if(to.matched.some(record => record.meta.requiresAuth)) {
         if (localStorage.getItem('authToken')) {
+            // fix pas joli pour régler problème du header défini qu'au refresh de la page
+            Vue.prototype.$axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('authToken')
             next()
             return
         }
