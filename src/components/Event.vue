@@ -22,7 +22,7 @@
             del(){
                 this.$axios({
                     method: 'get',
-                    url: '/del/' + event.currentTarget.id
+                    url: '/del/' + this.id
                 })
                     .then(() => {
                         this.$emit('del')
